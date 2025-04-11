@@ -36,10 +36,11 @@ namespace ApiPeliculas.Controllers
             return Ok(listaCategoriasDto); 
         }
         [HttpGet]
+        [HttpGet("{categoriaId:int}", Name ="GetCategoria")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
-        public IActionResult GetCategoria(int id)
+        public IActionResult GetCategoria(int categoriaId)
         {
             var listaCategoria = _ctRepo.GetCategorias();
             var listaCategoriasDto = new List<CategoriaDto>();

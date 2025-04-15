@@ -35,22 +35,26 @@ namespace ApiPeliculas.Controllers
             }
             return Ok(listaCategoriasDto); 
         }
+
         [HttpGet]
         [HttpGet("{categoriaId:int}", Name ="GetCategoria")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetCategoria(int categoriaId)
         {
-            var listaCategoria = _ctRepo.GetCategorias();
-            var listaCategoriasDto = new List<CategoriaDto>();
+            var itemCategoria = _ctRepo.GetCategoria(categoriaId);
 
-            foreach (var lista in listaCategoria)
+            if(itemCategoria == null)
             {
-
-                listaCategoriasDto.Add(_mapper.Map<CategoriaDto>(lista));
+                return NotFound();
             }
-            return Ok(listaCategoriasDto);
+
+            //Map recibe como como tipo el DTO y el parametro es el modelo que sera mapeado
+            var itemCategoriaDto = _mapper.Map<CategoriaDto>(itemCategoria);
+
+            return Ok(itemCategoriaDto);
         }
     }
 }

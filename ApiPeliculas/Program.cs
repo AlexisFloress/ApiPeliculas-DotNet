@@ -12,14 +12,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
     opciones.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQL"));
 });
 
-builder.Services.AddControllers();
-
 //Agregamos repositorios
 builder.Services.AddScoped<ICategoriaRepoitorio, CategoriaRepositorio>();
 
 //Agregamos el autoMapper
 builder.Services.AddAutoMapper(typeof(PeliculasMapper));
 
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

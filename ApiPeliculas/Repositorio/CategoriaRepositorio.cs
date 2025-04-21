@@ -15,7 +15,18 @@ namespace ApiPeliculas.Repositorio
         public bool ActualizarCategoria(Categoria categoria)
         {
             categoria.fechaCreacion = DateTime.Now;
-            _bd.Categorias.Update(categoria);
+
+            //fix put problem
+            var categoriaExistente = _bd.Categorias.Find(categoria.Id);
+            if (categoriaExistente != null)
+            {
+                _bd.Categorias.Entry(categoriaExistente).CurrentValues.SetValues(categoria);
+            }
+            else
+            {
+                _bd.Categorias.Update(categoria);
+            }
+
             return Guardar();
         }
 

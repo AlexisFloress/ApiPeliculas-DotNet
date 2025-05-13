@@ -13,9 +13,9 @@ namespace ApiPeliculas.Controllers
     [ApiController]
     public class CategoriasController : ControllerBase
     {
-        private readonly ICategoriaRepoitorio _ctRepo;
+        private readonly ICategoriaRepositorio _ctRepo;
         private readonly IMapper _mapper;
-        public CategoriasController(ICategoriaRepoitorio ctRepo, IMapper mapper)
+        public CategoriasController(ICategoriaRepositorio ctRepo, IMapper mapper)
         {
             _ctRepo = ctRepo;
             _mapper = mapper;

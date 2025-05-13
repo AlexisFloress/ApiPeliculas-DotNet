@@ -13,7 +13,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
 });
 
 //Agregamos repositorios
-builder.Services.AddScoped<ICategoriaRepoitorio, CategoriaRepositorio>();
+builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
+builder.Services.AddScoped<IPeliculaRepositorio, PeliculaRepositorio>();
+
+
 
 //Agregamos el autoMapper
 builder.Services.AddAutoMapper(typeof(PeliculasMapper));

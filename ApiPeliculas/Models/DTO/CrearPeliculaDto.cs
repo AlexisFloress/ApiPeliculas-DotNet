@@ -5,8 +5,6 @@ namespace ApiPeliculas.Models.DTO
 {
     public class CrearPeliculaDto
     {
-        [Key]
-        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public int Duracion { get; set; }
@@ -14,7 +12,7 @@ namespace ApiPeliculas.Models.DTO
         public enum TipoClasificacion { siete, Trece, Dieciseis, Dieciocho }
         public TipoClasificacion Clasificacion { get; set; }
         public DateTime FechaCreacion { get; set; }
+        public int categoriaId { get; set; }
 
-       
     }
 }

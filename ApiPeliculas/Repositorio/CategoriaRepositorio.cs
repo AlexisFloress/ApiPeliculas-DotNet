@@ -4,7 +4,7 @@ using ApiPeliculas.Repositorio.IRepositorio;
 
 namespace ApiPeliculas.Repositorio
 {
-    public class CategoriaRepositorio : ICategoriaRepoitorio
+    public class CategoriaRepositorio : ICategoriaRepositorio
     {
         private readonly ApplicationDbContext _bd;
         public CategoriaRepositorio(ApplicationDbContext bd)
@@ -27,20 +27,20 @@ namespace ApiPeliculas.Repositorio
                 _bd.Categorias.Update(categoria);
             }
 
-            return Guardar();
+            return Guardar;
         }
 
         public bool BorrarCategoria(Categoria categoria)
         {
             _bd.Categorias.Remove(categoria);
-            return Guardar();
+            return Guardar;
         }
 
         public bool CrearCategoria(Categoria categoria)
         {
             categoria.fechaCreacion = DateTime.Now;
             _bd.Categorias.Add(categoria);
-            return Guardar();
+            return Guardar;
         }
 
         public bool ExisteCategoria(int categoriaId)
@@ -64,9 +64,6 @@ namespace ApiPeliculas.Repositorio
             return _bd.Categorias.OrderBy(c => c.nombre).ToList();
         }
 
-        public bool Guardar()
-        {
-            return _bd.SaveChanges() >= 0 ? true : false;
-        }
+        public bool Guardar => _bd.SaveChanges() >= 0 ? true : false;
     }
 }

@@ -14,7 +14,5 @@ namespace ApiPeliculas.Models.DTO
         public enum TipoClasificacion { siete, Trece, Dieciseis, Dieciocho }
         public TipoClasificacion Clasificacion { get; set; }
         public DateTime FechaCreacion { get; set; }
-
-       
     }
 }

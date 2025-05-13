@@ -2,7 +2,7 @@
 
 namespace ApiPeliculas.Repositorio.IRepositorio
 {
-    public interface ICategoriaRepoitorio
+    public interface ICategoriaRepositorio
     {
         ICollection<Categoria> GetCategorias();
         Categoria GetCategoria(int categoriaId);
@@ -11,8 +11,6 @@ namespace ApiPeliculas.Repositorio.IRepositorio
         bool CrearCategoria(Categoria categoria);
         bool ActualizarCategoria(Categoria categoria);
         bool BorrarCategoria(Categoria categoria);
-        bool Guardar();
-
-
+        bool Guardar { get; }
     }
 }
